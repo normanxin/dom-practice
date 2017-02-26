@@ -1,0 +1,90 @@
+<html>
+  <head>
+    <title>Javascript DOM Practice 01</title>
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+	    /*超链接访问前，访问后样式一致*/
+  		a:link,a:visited {
+  			color: #0044ff;
+  			text-decoration: none;
+  		}
+
+  		a:hover {
+  			color: #ff8800;
+  		}
+
+  		#newstext {
+  			width: 500px;
+  			border: #00ff00 1px solid;
+  			padding: 10px;
+  		}
+
+  		/*预定义一些样式封装到选择器。一般使用类选择器。*/
+  		.norm {
+  			color: #000000;
+  			font-size: 16px;
+  			background-color: #cdd8d0;
+  		}
+
+  		.max {
+  			color: #808080;
+  			font-size: 28px;
+  			background-color: #9ce9b4;
+  		}
+
+  		.min {
+  			color: #ffffff;
+  			font-size: 12px;
+  			background-color: #f1b96d;
+  		}
+  	</style>
+  </head>
+  <body>
+		<!--
+		需求：新闻字体的大中小样式改变。
+
+		思路：
+		1，先有新闻数据，并用标签封装。
+		2，定义一些页面样式。静态的样式和预定义的样式(用于动态效果，方便于事件处理时的样式加载。)
+		3，确定事件源和事件，以及处理方式中被处理的节点。
+			事件源：a标签，事件：onclick。
+			被处理的节点 div-newstext
+
+			既然要给超链接加入自定义的事件处理，就要先取消超链接的默认点击效果。
+			可以使用给href设置：javascript:void(0)或者javascript:;来完成。
+		4，用js处理页面的行为。
+		-->
+		<h1>This is a news heading</h1>
+		<hr/>
+		<a href="javascript:void(0)" class="max-link">Large</a>
+		<a href="javascript:void(0)" class="norm-link">Normal</a>
+		<a href="javascript:void(0)" class="min-link">Small</a>
+		<div id="newstext" class="norm">
+      This is the news contentThis is the news contentThis is the news content
+      This is the news contentThis is the news contentThis is the news content
+      This is the news contentThis is the news contentThis is the news content
+      This is the news contentThis is the news contentThis is the news content
+      This is the news contentThis is the news contentThis is the news content
+      This is the news contentThis is the news contentThis is the news content
+      This is the news contentThis is the news contentThis is the news content
+      This is the news contentThis is the news contentThis is the news content
+      This is the news contentThis is the news contentThis is the news content
+      This is the news contentThis is the news contentThis is the news content
+      This is the news contentThis is the news contentThis is the news content
+      This is the news contentThis is the news contentThis is the news content
+		</div>
+    <script type="text/javascript">
+      const maxLink = document.querySelector('.max-link'),
+            normLink = document.querySelector('.norm-link'),
+            minLink = document.querySelector('.min-link');
+      const newsText = document.querySelector('#newstext');
+      const setFontSize = sizeClass => newsText.className = sizeClass;
+
+      maxLink.onclick = () => setFontSize('max');
+      normLink.onclick = () => setFontSize('norm');
+      minLink.onclick = () => setFontSize('min');
+		</script>
+  </body>
+</html>
