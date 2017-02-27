@@ -1,0 +1,118 @@
+<html>
+  <head>
+    <title>Javascript DOM Practice 02</title>
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+	   	dl dd {
+			  margin: 0px;
+		  }
+
+  		dl {
+  			height: 18px;
+  		}
+  		/*预定义一些样式，类选择器，便于给标签进行样式的动态加载。*/
+  		.open {
+  			overflow: visible;
+  		}
+
+  		.close {
+  			overflow: hidden;
+  		}
+
+  		dl dt {
+  			color: #ff8000;
+  		}
+	  </style>
+  </head>
+  <body>
+    <!-- 在多个列表下，一次只需要展开一个列表其他列表都关闭。
+		 怎么保证开一个，而关其他呢？
+		 思路：
+		 1，获取所有的dl节点。
+		 2，遍历这些节点，只对当前的dl进行展开或者闭合操作，其他节点都进行闭合操作。
+    -->
+  	<!--
+  		思路：
+  		1,标签封装数据，html
+  		2,定义样式 css
+  		3,明确事件源，事件，以及要处理节点，dom。
+  		4,明确具体的操作方式，其实就是事件的处理内容。 js。
+		-->
+		<dl class="close">
+			<dt>Show entry 1</dt>
+			<dd>Expanded List Contents 1</dd>
+			<dd>Expanded List Contents 1</dd>
+			<dd>Expanded List Contents 1</dd>
+			<dd>Expanded List Contents 1</dd>
+		</dl>
+		<hr>
+		<dl class="close">
+			<dt>Show entry 1</dt>
+			<dd>Expanded List Contents 2</dd>
+			<dd>Expanded List Contents 2</dd>
+			<dd>Expanded List Contents 2</dd>
+			<dd>Expanded List Contents 2</dd>
+		</dl>
+		<dl class="close">
+			<dt>Show entry 2</dt>
+			<dd>Expanded List Contents 3</dd>
+			<dd>Expanded List Contents 3</dd>
+			<dd>Expanded List Contents 3</dd>
+			<dd>Expanded List Contents 3</dd>
+		</dl>
+		<dl class="close">
+			<dt>Show entry 3</dt>
+			<dd>Expanded List Contents 4</dd>
+			<dd>Expanded List Contents 4</dd>
+			<dd>Expanded List Contents 4</dd>
+			<dd>Expanded List Contents 4</dd>
+		</dl>
+		<hr>
+		<dl class="close">
+			<dt>Show entry 1</dt>
+			<dd>Expanded List Contents 5</dd>
+			<dd>Expanded List Contents 5</dd>
+			<dd>Expanded List Contents 5</dd>
+			<dd>Expanded List Contents 5</dd>
+		</dl>
+		<hr>
+		<dl class="close">
+			<dt>Show entry 1</dt>
+			<dd>Expanded List Contents 6</dd>
+			<dd>Expanded List Contents 6</dd>
+			<dd>Expanded List Contents 6</dd>
+			<dd>Expanded List Contents 6</dd>
+		</dl>
+		<dl class="close">
+			<dt>Show entry 2</dt>
+			<dd>Expanded List Contents 7</dd>
+			<dd>Expanded List Contents 7</dd>
+			<dd>Expanded List Contents 7</dd>
+			<dd>Expanded List Contents 7</dd>
+		</dl>
+		<dl class="close">
+			<dt>Show entry 3</dt>
+			<dd>Expanded List Contents 8</dd>
+			<dd>Expanded List Contents 8</dd>
+			<dd>Expanded List Contents 8</dd>
+			<dd>Expanded List Contents 8</dd>
+		</dl>
+    <script>
+      const body = document.querySelector('body');
+      const dls = body.getElementsByTagName('dl');
+
+      body.addEventListener('click', event => {
+        for (let dl of dls) {
+          if (dl === event.target.parentNode) {
+            dl.className = 'open';
+            continue;
+          }
+
+          dl.className = 'close';
+        }
+      });
+    </script>
+  </body>
+</html>
